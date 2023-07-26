@@ -1,0 +1,22 @@
+{
+    "cars": [
+        {
+            "id": 1,
+            "name": "Toyota camry",
+            "price": 24790,
+            "image": "https://www.ixbt.com/img/n1/news/2020/7/4/Tesla-wrap-hero_large.jpg"
+        },
+        {
+            "id": 1,
+            "name": "Toyota camry",
+            "price": 24790,
+            "image": "https://bipbap.ru/wp-content/uploads/2017/09/1164905.jpg"
+        },
+        {
+            "id": 1,
+            "name": "Toyota camry",
+            "price": 24790,
+            "image": "https://aif-s3.aif.ru/images/028/998/fea2ed83e8a8484dbf121414e616dcf4.jpg"
+        }
+    ]
+}

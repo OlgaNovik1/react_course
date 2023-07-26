@@ -1,6 +1,7 @@
 .item {
     border: 1px solid white;
     width: 300px;
+    margin-bottom: 30px;
 }
 
 h1 {
