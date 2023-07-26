@@ -1,30 +1,46 @@
 import React, { useState } from 'react'
 import styles from './CreateCarForm.module.css'
 
-const CreateCarForm = () => {
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
-    const [image, setImage] = useState('');
+
+const clearData = {
+    name: '',
+    price: '',
+    image: '',
+}
+
+const CreateCarForm = ({ setCars }) => {
+    const [data, setData] = useState(clearData);
 
     const createCar = (e) => {
         e.preventDefault()
+        setCars(prev => [...prev, {
+            id: prev.length + 1,
+            ...data
+        }]);
+        setData(clearData);
     }
 
     return (
         <form className={styles.form}>
             <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={data.name}
+                onChange={(e) => setData(prev => ({
+                    ...prev, name: e.target.value
+                }))}
                 placeholder='Enter car name'
             />
             <input
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                value={data.price}
+                onChange={(e) => setData(prev => ({
+                    ...prev, price: e.target.value
+                }))}
                 placeholder='Enter price'
             />
             <input
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+                value={data.image}
+                onChange={(e) => setData(prev => ({
+                    ...prev, image: e.target.value
+                }))}
                 placeholder='Enter image'
             />
             <button

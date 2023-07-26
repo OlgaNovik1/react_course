@@ -1,16 +1,28 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import styles from './Home.module.css'
 import car from '../../../assets/images/car.jpg'
-import { cars } from './cars.data.js'
+import { cars as carsData } from './cars.data.js'
 import CarItem from './car-item/CarItem'
 import CreateCarForm from './create-car-form/CreateCarForm'
+import axios from 'axios'
+import { CarService } from '../../../services/car.service'
 
 const Home = () => {
+    const [cars, setCars] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await CarService.getAll()
+            setCars(data)
+        }
+
+        fetchData()
+    }, [])
 
     return (
         <div>
             <h1>Cars catalog</h1>
-            <CreateCarForm />
+            <CreateCarForm setCars={setCars} />
             <div>
                 {cars.length ?
                     cars.map(car => (
