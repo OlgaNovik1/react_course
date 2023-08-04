@@ -1,5 +1,8 @@
 import React, { useRef } from 'react'
 
+
+
+//пример использования useRef
 const Player = ({ src, ...props }) => {
     const ref = useRef();
     console.log(ref)
