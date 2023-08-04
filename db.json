@@ -1,22 +1,40 @@
 {
-    "cars": [
-        {
-            "id": 1,
-            "name": "Toyota camry",
-            "price": 24790,
-            "image": "https://www.ixbt.com/img/n1/news/2020/7/4/Tesla-wrap-hero_large.jpg"
-        },
-        {
-            "id": 2,
-            "name": "Jeep",
-            "price": 25100,
-            "image": "https://bipbap.ru/wp-content/uploads/2017/09/1164905.jpg"
-        },
-        {
-            "id": 3,
-            "name": "Honda",
-            "price": 27600,
-            "image": "https://klike.net/uploads/posts/2019-05/medium/1559021804_2.jpg"
-        }
-    ]
+  "cars": [
+    {
+      "id": 1,
+      "name": "Toyota camry",
+      "price": 24790,
+      "image": "https://www.ixbt.com/img/n1/news/2020/7/4/Tesla-wrap-hero_large.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jeep",
+      "price": 25100,
+      "image": "https://bipbap.ru/wp-content/uploads/2017/09/1164905.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Honda",
+      "price": 27600,
+      "image": "https://klike.net/uploads/posts/2019-05/medium/1559021804_2.jpg"
+    },
+    {
+      "name": "rrrr",
+      "price": "4444",
+      "image": "ffff",
+      "id": 4
+    },
+    {
+      "name": "ppppp",
+      "price": "6666666666666666",
+      "image": "pppp",
+      "id": 5
+    },
+    {
+      "name": "wwwwwwwwwww",
+      "price": "0",
+      "image": "wwwwwwww",
+      "id": 6
+    }
+  ]
 }

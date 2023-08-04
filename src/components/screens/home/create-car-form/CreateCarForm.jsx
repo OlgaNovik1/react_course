@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
 import styles from './CreateCarForm.module.css'
 import { useForm } from 'react-hook-form';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { CarService } from '../../../../services/car.service';
 
 
-const clearData = {
-    name: '',
-    price: '',
-    image: '',
-}
-
-const CreateCarForm = ({ setCars }) => {
+const CreateCarForm = () => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm({
         mode: 'onChange'
     })
 
+    const queryClient = useQueryClient();
+
+    const { mutate } = useMutation(['create car'], (data) => CarService.create(data), {
+        onSuccess: () => {
+            queryClient.invalidateQueries('cars')
+            reset()
+        }
+    })
+
     const createCar = (data) => {
         console.log(data)
-        setCars(prev => [...prev, {
-            id: prev.length + 1,
-            ...data
-        }]);
-        reset();
+        mutate(data);
     }
 
     return (
@@ -28,7 +29,7 @@ const CreateCarForm = ({ setCars }) => {
             <input
                 {...register('name', { required: 'Name is required' })}
                 placeholder='Enter car name' />
-            {errors?.name?.message}
+            {errors?.name?.message && (<p style={{ color: 'red' }}>required</p>)}
 
             <input
                 {...register('price', { required: 'Name is required' })}
@@ -53,13 +54,11 @@ const CreateCarForm = ({ setCars }) => {
 
 export default CreateCarForm
 
-// interface IMan {
-//     name: string;
-//     height: number;
-// }
-// let man: IMan = { name: 'Dima', height: 1.78 }
 
-// let man: { name: string, height: number } = { name: 'Dima', height: 1.78 } //не очень вариант
+
+
+
+
 
 
 

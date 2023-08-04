@@ -9,28 +9,14 @@ import { CarService } from '../../../services/car.service'
 import { useNavigate } from 'react-router-dom'
 import Player from './Player'
 import { AuthContext } from '../../../provider/AuthProvider'
+import { useQuery } from '@tanstack/react-query'
 
 const Home = () => {
-    const [cars, setCars] = useState([]);
-
-    const clearCars = useCallback(() =>
-        () => {
-            setCars([])
-        }, [cars])
-
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await CarService.getAll()
-            setCars(data)
-        }
-
-        fetchData()
-
-        return clearCars
-    }, [])
+    const { data, isLoading, error } = useQuery(['cars'], () => CarService.getAll())
 
     const { user, setUser } = useContext(AuthContext)
+
+    if (isLoading) return <p>Loading...</p>
 
     return (
         <div>
@@ -46,10 +32,10 @@ const Home = () => {
             )}
 
 
-            <CreateCarForm setCars={setCars} />
+            <CreateCarForm />
             <div>
-                {cars.length ?
-                    cars.map(car => (
+                {data.length ?
+                    data.map(car => (
                         <CarItem
                             key={car.id}
                             car={car}

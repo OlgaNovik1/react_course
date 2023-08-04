@@ -11,4 +11,7 @@ export const CarService = {
 
         return response.data[0];
     },
+    async create(data) {
+        return axios.post(`http://localhost:4200/cars`, data);
+    },
 }
